@@ -18,4 +18,18 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   end
+
+  def score_with_multipliers(word, multipliers, word_multiplier = 1)
+    score = word.upcase.chars.map do |letter|
+      score(word)
+    end.zip(multipliers).map do |score_a, score_b|
+      score_a * score_b
+    end.reduce(:+)
+
+
+    score += 10 if word.length >= 7
+    score * word_multiplier
+  end
+
+
 end
